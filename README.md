@@ -15,6 +15,21 @@ caching and Nimbus OAuth2 SDK for the wire protocol.
 - Cache user-profile information for a configured period to prevent frequent round-trips to OIDC UserInfo endpoint.
 - Logout support which revokes the issued user token so that it cannot be used to access protected resources after logout.
 
+## Packaging and running the service
+
+The application can be packaged using:
+```shell script
+./gradlew build
+```
+The service can be started using `java -jar build/quarkus-app/quarkus-run.jar`.
+
+## Building container image
+
+Container image can be built using:
+```shell script
+./gradlew build -Dquarkus.container-image.build=true
+```
+
 ## Roadmap
 - Proof-Key Code Exchange (PKCE) support for additional security.
 - Fault-tolerance to re-try failed requests.
@@ -22,4 +37,4 @@ caching and Nimbus OAuth2 SDK for the wire protocol.
 - Persistence support to durably store OIDC provider access tokens and user profile information.
 - Reactive Extensions support to scale the service to handle concurrent requests using minimum number of threads.
 - Health check and metrics for observability.
-
+- Building a native executable for the service using GraalVM.
