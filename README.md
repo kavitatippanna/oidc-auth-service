@@ -32,6 +32,7 @@ Container image can be built using:
 
 ## Roadmap
 - Proof-Key Code Exchange (PKCE) support for additional security.
+- Integration with Vault to manage client credentials and private key used to sign JWT user tokens. 
 - Fault-tolerance to re-try failed requests.
 - Rate limit requests to Authentication service.
 - Persistence support to durably store OIDC provider access tokens and user profile information.
