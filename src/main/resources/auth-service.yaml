@@ -1,0 +1,37 @@
+# Supported list of Identity providers and registered OIDC clients.
+oidc_clients:
+  - provider_name: Google
+    discovery_url: https://accounts.google.com
+    client_id: 867326719505-b5isfucqlluddsfd3fug4vsbk3uj6bvt.apps.googleusercontent.com
+    client_secret: <client_secret>
+    request_scopes:
+      - openid
+      - profile
+      - email
+
+  - provider_name: Apple
+    discovery_url: https://appleid.apple.com
+    client_id: <client_id>
+    client_secret: <client_secret>
+    request_scopes:
+      - openid
+      - name
+      - email
+
+  - provider_name: Facebook
+    discovery_url: https://www.facebook.com
+    client_id: <client_id>
+    client_secret: <client_secret>
+    request_scopes:
+      - openid
+      - profile
+      - email
+
+# Configuration for user token issued to Auth service clients.
+user_token:
+  issuer: http://www.forgerock.com
+  audience: http://www.forgerock.com
+  private_key:
+  signature_algorithm: RS256
+  key_size: 2048
+  expiry: 600 #seconds
