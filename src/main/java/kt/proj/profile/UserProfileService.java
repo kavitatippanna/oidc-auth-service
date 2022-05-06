@@ -25,8 +25,8 @@ import kt.proj.config.OIDCProviders;
 import org.jetbrains.annotations.NotNull;
 
 @ApplicationScoped
-public class UserService {
-  private static final Logger LOGGER = Logger.getLogger(UserService.class.getName());
+public class UserProfileService {
+  private static final Logger LOGGER = Logger.getLogger(UserProfileService.class.getName());
   private final OIDCProviders oidcProviders;
   private final UserTokenManager tokenManager;
 
@@ -39,7 +39,7 @@ public class UserService {
   private final LoadingCache<String, UserInfo> userInfoCache;
 
   @Inject
-  public UserService(OIDCProviders providers, UserTokenManager tokenManager) {
+  public UserProfileService(OIDCProviders providers, UserTokenManager tokenManager) {
     this.oidcProviders = providers;
     this.tokenManager = tokenManager;
     userInfoCache =

@@ -19,7 +19,7 @@ import org.jboss.resteasy.reactive.RestResponse;
 @Path("/myprofile")
 public class UserProfileResource {
   private static final Logger LOGGER = Logger.getLogger(UserProfileResource.class.getName());
-  @Inject UserService userService;
+  @Inject UserProfileService userProfileService;
   @Inject SecurityContext securityContext;
 
   @Inject
@@ -30,7 +30,7 @@ public class UserProfileResource {
   public RestResponse getUserProfile() {
     SecurityFilter.UserTokenPrincipal tokenPrincipal =
         (SecurityFilter.UserTokenPrincipal) securityContext.getUserPrincipal();
-    UserInfo userInfo = userService.getMyProfile(tokenPrincipal.getUserToken());
+    UserInfo userInfo = userProfileService.getMyProfile(tokenPrincipal.getUserToken());
     if (userInfo == null) {
       LOGGER.fine("Unable to fetch profile for user " + tokenPrincipal.getName());
       return ErrorResponseHandler.buildErrorResponse(
@@ -40,7 +40,7 @@ public class UserProfileResource {
     }
 
     return RestResponse.ResponseBuilder.create(RestResponse.Status.OK)
-        .entity(createUSerProfileModel(userInfo))
+        .entity(createUserProfileModel(userInfo))
         .build();
   }
 
@@ -50,7 +50,7 @@ public class UserProfileResource {
    * @param userInfo
    * @return
    */
-  private UserProfileModel createUSerProfileModel(UserInfo userInfo) {
+  private UserProfileModel createUserProfileModel(UserInfo userInfo) {
     UserProfileModel profileModel = new UserProfileModel();
     profileModel.setUserName(userInfo.getName());
     profileModel.setEmail(userInfo.getEmailAddress());

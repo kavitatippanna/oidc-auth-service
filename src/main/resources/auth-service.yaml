@@ -29,8 +29,8 @@ oidc_clients:
 
 # Configuration for user token issued to Auth service clients.
 user_token:
-  issuer: http://www.forgerock.com
-  audience: http://www.forgerock.com
+  issuer: http://www.example.com
+  audience: http://www.example.com
   private_key:
   signature_algorithm: RS256
   key_size: 2048
